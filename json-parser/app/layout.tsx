@@ -4,6 +4,10 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "JSON Parser - Export to Excel, TXT, Properties",
   description: "Parse JSON and export to Excel, TXT, and Properties files",
+  icons: {
+    icon: "/favicon.svg",
+    apple: "/favicon.svg",
+  },
 };
 
 export default function RootLayout({

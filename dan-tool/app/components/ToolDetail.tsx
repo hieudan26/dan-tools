@@ -12,20 +12,20 @@ export default function ToolDetail({ tool, onClose }: ToolDetailProps) {
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black bg-opacity-50 backdrop-blur-sm"
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-fade-in"
       onClick={onClose}
     >
       <div
-        className="bg-white dark:bg-gray-800 rounded-2xl shadow-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto"
+        className="bg-white/95 dark:bg-gray-800/95 backdrop-blur-md rounded-3xl shadow-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto border border-gray-200/50 dark:border-gray-700/50 animate-scale-in"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="sticky top-0 bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 px-6 py-4 flex items-center justify-between rounded-t-2xl">
+        <div className="sticky top-0 bg-white/95 dark:bg-gray-800/95 backdrop-blur-md border-b border-gray-200/50 dark:border-gray-700/50 px-6 py-5 flex items-center justify-between rounded-t-3xl">
           <div className="flex items-center gap-4">
             <div
-              className={`w-12 h-12 bg-gradient-to-br ${tool.gradient} rounded-xl flex items-center justify-center`}
+              className={`w-14 h-14 bg-gradient-to-br ${tool.gradient} rounded-xl flex items-center justify-center shadow-lg`}
             >
               <svg
-                className="w-6 h-6 text-white"
+                className="w-7 h-7 text-white"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -49,7 +49,7 @@ export default function ToolDetail({ tool, onClose }: ToolDetailProps) {
           </div>
           <button
             onClick={onClose}
-            className="w-10 h-10 flex items-center justify-center rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+            className="w-10 h-10 flex items-center justify-center rounded-xl hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
           >
             <svg
               className="w-6 h-6 text-gray-500 dark:text-gray-400"
@@ -68,18 +68,18 @@ export default function ToolDetail({ tool, onClose }: ToolDetailProps) {
         </div>
 
         <div className="p-6 md:p-8">
-          <p className="text-gray-700 dark:text-gray-300 mb-8 leading-relaxed">
+          <p className="text-gray-700 dark:text-gray-300 mb-8 leading-relaxed text-lg">
             {tool.description}
           </p>
 
           <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
-            Tính năng chính:
+            Key Features:
           </h3>
           <ul className="space-y-3 mb-8 text-gray-700 dark:text-gray-300">
             {tool.features.map((feature, index) => (
-              <li key={index} className="flex items-start gap-3">
+              <li key={index} className="flex items-start gap-3 group">
                 <svg
-                  className="w-6 h-6 text-green-500 mt-0.5 flex-shrink-0"
+                  className="w-6 h-6 text-green-500 mt-0.5 flex-shrink-0 group-hover:scale-110 transition-transform"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -91,21 +91,21 @@ export default function ToolDetail({ tool, onClose }: ToolDetailProps) {
                     d="M5 13l4 4L19 7"
                   />
                 </svg>
-                <span>{feature}</span>
+                <span className="group-hover:text-gray-900 dark:group-hover:text-white transition-colors">{feature}</span>
               </li>
             ))}
           </ul>
 
           {tool.status === "available" && (tool.url || tool.githubUrl) && (
-            <div className="flex flex-col sm:flex-row gap-4 pt-4 border-t border-gray-200 dark:border-gray-700">
+            <div className="flex flex-col sm:flex-row gap-4 pt-4 border-t border-gray-200/50 dark:border-gray-700/50">
               {tool.url && (
                 <a
                   href={tool.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex-1 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold py-4 px-6 rounded-xl hover:from-blue-600 hover:to-purple-700 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 text-center"
+                  className="flex-1 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold py-4 px-6 rounded-xl hover:from-blue-600 hover:to-purple-700 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 text-center group"
                 >
-                  Mở {tool.name}
+                  <span className="group-hover:scale-105 inline-block transition-transform">Open {tool.name}</span>
                 </a>
               )}
               {tool.githubUrl && (
@@ -113,10 +113,10 @@ export default function ToolDetail({ tool, onClose }: ToolDetailProps) {
                   href={tool.githubUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex-1 bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-white font-semibold py-4 px-6 rounded-xl hover:bg-gray-200 dark:hover:bg-gray-600 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 text-center flex items-center justify-center gap-2"
+                  className="flex-1 bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-white font-semibold py-4 px-6 rounded-xl hover:bg-gray-200 dark:hover:bg-gray-600 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 text-center flex items-center justify-center gap-2 group"
                 >
                   <svg
-                    className="w-5 h-5"
+                    className="w-5 h-5 group-hover:scale-110 transition-transform"
                     fill="currentColor"
                     viewBox="0 0 24 24"
                   >
@@ -126,17 +126,17 @@ export default function ToolDetail({ tool, onClose }: ToolDetailProps) {
                       clipRule="evenodd"
                     />
                   </svg>
-                  Xem trên GitHub
+                  <span className="group-hover:scale-105 inline-block transition-transform">View on GitHub</span>
                 </a>
               )}
             </div>
           )}
 
           {tool.status === "coming-soon" && (
-            <div className="pt-4 border-t border-gray-200 dark:border-gray-700">
+            <div className="pt-4 border-t border-gray-200/50 dark:border-gray-700/50">
               <div className="bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-200 dark:border-yellow-800 rounded-xl p-4 text-center">
                 <p className="text-yellow-800 dark:text-yellow-200 font-medium">
-                  Tool này đang được phát triển và sẽ sớm ra mắt!
+                  This tool is under development and will be available soon!
                 </p>
               </div>
             </div>
@@ -146,4 +146,3 @@ export default function ToolDetail({ tool, onClose }: ToolDetailProps) {
     </div>
   );
 }
-
