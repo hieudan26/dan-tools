@@ -1,23 +1,31 @@
 # Deployment Guide for JSON Parser
 
-## Vercel Deployment
+## Vercel Deployment (Standalone)
+
+This project can be deployed independently on Vercel.
+
+### Option 1: Deploy from Monorepo
 
 1. **Connect your repository** to Vercel
 2. **Project Settings:**
-   - Framework Preset: **Next.js** (or Auto-detect)
-   - Build Command: Leave empty (default: `npm run build`)
-   - Output Directory: **Leave empty** (Vercel auto-detects `.next`)
-   - Install Command: Leave empty (default: `npm install`)
-   - Root Directory: `json-parser` (if deploying from monorepo)
+   - Framework Preset: **Next.js**
+   - Root Directory: **json-parser**
+   - Build Command: `npm run build` (or leave empty)
+   - Output Directory: **.next** (or leave empty for auto-detect)
+   - Install Command: `npm install` (or leave empty)
 
-3. **Environment Variables** (if needed):
-   - None required for basic functionality
+3. **Deploy**
 
-4. **Deploy**
+### Option 2: Deploy as Separate Repository
+
+If you want to deploy this as a separate repository:
+
+1. Copy the `json-parser` folder to a new repository
+2. Update any relative paths if needed
+3. Deploy normally on Vercel
 
 ## Important Notes
 
-- Do NOT set Output Directory to `public` - Vercel will auto-detect `.next` for Next.js
-- The `public` folder is for static assets, not the build output
-- Next.js build output goes to `.next` directory
-
+- The `vercel.json` file is configured for this project
+- Output Directory is `.next` (Next.js default)
+- The `public` folder is for static assets only
